@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 17% 7%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 15% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 15% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 189 95% 52%;
+    --primary-foreground: 220 17% 7%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 217 10% 64%;
+
+    --accent: 189 95% 52%;
+    --accent-foreground: 220 17% 7%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 189 95% 52%;
+
+    --radius: 0.75rem;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(189 95% 52%) 0%, hsl(210 90% 60%) 100%);
+    --gradient-radial: radial-gradient(circle at top right, hsl(189 95% 52% / 0.15), transparent 50%);
+    --shadow-glow: 0 0 40px hsl(189 95% 52% / 0.3);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 17% 7%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 15% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 15% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 189 95% 52%;
+    --primary-foreground: 220 17% 7%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 217 10% 64%;
+
+    --accent: 189 95% 52%;
+    --accent-foreground: 220 17% 7%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 189 95% 52%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* 1. Keyframes para la animación de "escribir".
+  Anima el ancho del elemento de 0% a 100%.
+*/
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/*
+  2. Keyframes para el cursor parpadeante.
+  Anima el color del borde (nuestro cursor).
+  Usamos 'hsl(var(--primary))' para que tome tu color primario de Tailwind/shadcn.
+*/
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: hsl(var(--primary)); }
+}
+
+/*
+  3. La clase de utilidad que aplicaremos en el HTML.
+*/
+.text-typing {
+  display: inline-block; /* Necesario para que la animación 'width' funcione */
+  overflow: hidden;      /* Oculta el texto que aún no se ha "escrito" */
+  white-space: nowrap;  /* Mantiene el texto en una sola línea */
+  
+  /* Crea el cursor que parpadea */
+  border-right: .15em solid hsl(var(--primary));
+
+  /* Aplica AMBAS animaciones:
+     1. 'typing': dura 2 segundos, usa 14 pasos (1 por cada letra en "Gabriel Monroy", incl. espacio).
+     2. 'blink-caret': dura 0.75s y se repite infinitamente.
+  */
+  animation: typing 2s steps(14, end),
+             blink-caret .75s step-end infinite;
+}
+

@@ -1,0 +1,89 @@
+replicaCount: 1
+
+image:
+  repository: gabriel72188/portfolio
+  pullPolicy: Always
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+podLabels: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: NodePort
+  port: 80
+  nodePort: 30085
+
+# INGRESS ACTIVADO CON TU DOMINIO
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations: 
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: gabrielmq.com
+      paths:
+        - path: /
+          pathType: Prefix
+
+httpRoute:
+  enabled: false
+  annotations: {}
+  parentRefs:
+  - name: gateway
+    sectionName: http
+  hostnames:
+  - chart-example.local
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /headers
+
+resources: {}
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+mysql:
+  enabled: true
+  auth:
+    rootPassword: rootpassword123
+    database: portfolio
+    username: portfolio_user
+    password: portfolio_pass
+  primary:
+    persistence:
+      enabled: true
+      size: 1Gi
+
+volumes: []
+volumeMounts: []
+nodeSelector: {}
+tolerations: []
+affinity: {}
