@@ -33,12 +33,17 @@ ingress:
   enabled: true
   className: "nginx"
   annotations: 
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
     nginx.ingress.kubernetes.io/rewrite-target: /
   hosts:
     - host: gabrielmq.com
       paths:
         - path: /
           pathType: Prefix
+  tls: 
+    - secretName: portfolio-tls
+      hosts:
+        - gabrielmq.com
 
 httpRoute:
   enabled: false
