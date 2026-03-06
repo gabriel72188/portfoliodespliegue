@@ -1,11 +1,12 @@
 replicaCount: 1
 
 image:
-  repository: gabriel72188/portfolio
+  repository: gaabriel05/portfolio
   pullPolicy: Always
   tag: "latest"
 
-imagePullSecrets: []
+imagePullSecrets:
+  - name: dockerhub-secret
 nameOverride: ""
 fullnameOverride: ""
 

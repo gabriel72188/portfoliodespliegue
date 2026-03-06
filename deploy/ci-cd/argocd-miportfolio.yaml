@@ -4,7 +4,6 @@ metadata:
   name: portfolio-gabriel
   namespace: argocd
   annotations:
-    # AQUÍ VA DOCKER
     argocd-image-updater.argoproj.io/image-list: myimg=gaabriel05/portfolio
     argocd-image-updater.argoproj.io/myimg.update-strategy: latest
     argocd-image-updater.argoproj.io/myimg.helm.image-name: image.repository
