@@ -37,8 +37,8 @@ spec:
                         /kaniko/executor \
                         --context \$(pwd) \
                         --dockerfile deploy/build_img/Dockerfile \
-                        --destination gabriel72188/portfolio:${env.GIT_COMMIT} \
-                        --destination gabriel72188/portfolio:latest \
+                        --destination gaabriel05/portfolio:${env.GIT_COMMIT} \
+                        --destination gaabriel05/portfolio:latest \
                         --snapshot-mode=redo \
                         --single-snapshot
                     """

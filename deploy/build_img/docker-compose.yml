@@ -3,7 +3,10 @@ services:
     build: 
       context: ../..
       dockerfile: deploy/build_img/Dockerfile
-    image: iferlop/portfolio_app:latest
+    image:
+      repository: gaabriel05/portfolio
+      pullPolicy: Always
+      tag: "latest"
     container_name: portfolio_app
     ports: 
       - "8000:80"
