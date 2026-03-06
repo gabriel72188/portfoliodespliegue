@@ -21,8 +21,7 @@ spec:
   volumes:
   - name: kaniko-secret
     secret:
-      # NOTA: Este es el nombre del secreto en Kubernetes con tus credenciales de Docker Hub
-      secretName: dockerhub-secret 
+      secretName: dockerhub-secret
       items:
       - key: .dockerconfigjson
         path: config.json
@@ -30,7 +29,8 @@ spec:
         }
     }
 
-    stage('Build and Push') {
+    stages {
+        stage('Build and Push') {
             steps {
                 container('kaniko') {
                     sh """
@@ -62,7 +62,7 @@ spec:
                         mv kubectl /usr/local/bin/
 
                         # --- REINICIO ---
-                        # con esto fuerzo el reinicio del pod (Ajustado a tu nombre)
+                        # con esto fuerzo el reinicio del pod   
                         kubectl rollout restart deployment/portfolio-gabriel-miportfolio --namespace portfolio-namespace
                     """
                 }
