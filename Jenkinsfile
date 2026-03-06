@@ -30,15 +30,14 @@ spec:
         }
     }
 
-    stages {
-        stage('Build and Push') {
+    stage('Build and Push') {
             steps {
                 container('kaniko') {
                     sh """
                         /kaniko/executor \
                         --context \$(pwd) \
                         --dockerfile deploy/build_img/Dockerfile \
-                        --destination gabriel72188/portfolio:\${env.GIT_COMMIT} \
+                        --destination gabriel72188/portfolio:${env.GIT_COMMIT} \
                         --destination gabriel72188/portfolio:latest \
                         --snapshot-mode=redo \
                         --single-snapshot
