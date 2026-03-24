@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: gaabriel05/portfolio
   pullPolicy: Always
-  tag: "7ca900e20b4494311ef9fab157515cd16c849ddd"
+  tag: "d3ea59a220ff53d6def3415f64b3958a5f2b0637"
 
 imagePullSecrets:
   - name: dockerhub-secret
