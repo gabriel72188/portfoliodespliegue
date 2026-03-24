@@ -120,7 +120,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               </div>
               
               <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-                Enviar mensaje 2
+                Enviar mensaje 3
               </Button>
             </form>
           </Card> 
