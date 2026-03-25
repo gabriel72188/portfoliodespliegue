@@ -11,7 +11,7 @@ export const Hero = () => {
           <div className="space-y-4">
             <p className="text-lg text-muted-foreground tracking-wide">Hola, soy</p>
             <h1 className="text-5xl md:text-7xl font-bold">
-              <span className="text-gradient" >Gabriel</span>
+              <span className="text-gradient" >Gabriel Monroy</span>
             </h1>
             <h2 className="text-3xl md:text-5xl font-semibold text-foreground/90">
               Desarrollador Web
